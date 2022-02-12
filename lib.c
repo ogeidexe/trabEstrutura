@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 /******************
 *Jeferson Silva 
 *Diego teixeira
@@ -25,7 +26,7 @@ typedef struct node
 
 
 // Defalt Binarye Tree operatios
-node insertNode(node *root, node *new); // insert ordering nodes
+node *insertNode(node *root, player player); // insert ordering nodes
 node deleteNode(player player, node *root);
 node searchNode(player player, node *root);
 
@@ -40,20 +41,21 @@ node calcPositions(node root);
 
 //Implementatios
 
-node insertNode(node *root,node *new){
-    node *current;
+node *insertNode(node *root,player player){
+    node *current   = (node *)malloc(sizeof(struct node));
     current->left = NULL;
     current->right = NULL;
-    current = new;
+    current->player = player;
 
     if(root == NULL){
-        return *root;
+        current ->position = 1;
+        return current;
     }else  if(root->position > current->position){
-        *root->left = insertNode(root->left, current);
+        root->left = insertNode(root->left,current->player);
     }else{
-        *root->right = insertNode(root->right,current);
+        root->right = insertNode(root->right,current->player);
     }
-    return *root;
+    return root;
 }
 
 node deleteNode(player player, node *root){
