@@ -17,17 +17,17 @@ typedef struct node
 {   
     struct player player;
     int position;
-    struct node *esq;
-    struct node *dir;
+    struct node *left;
+    struct node *right;
 }node;
 
 //---------------------------- Functions ----------------------//
 
 
 // Defalt Binarye Tree operatios
-int insertNode(player player, node root); // insert ordering nodes
-node deleteNode(player player, node root);
-node searchNode(player player, node root);
+node insertNode(node *root, node *new); // insert ordering nodes
+node deleteNode(player player, node *root);
+node searchNode(player player, node *root);
 
 int swapNodes(node whereNode, node fromNode); /// BOSS****
 
@@ -40,11 +40,23 @@ node calcPositions(node root);
 
 //Implementatios
 
-int insertNode(player player, node root){
+node insertNode(node *root,node *new){
+    node *current;
+    current->left = NULL;
+    current->right = NULL;
+    current = new;
 
+    if(root == NULL){
+        return *root;
+    }else  if(root->position > current->position){
+        *root->left = insertNode(root->left, current);
+    }else{
+        *root->right = insertNode(root->right,current);
+    }
+    return *root;
 }
 
-node deleteNode(player player, node root){
+node deleteNode(player player, node *root){
 
 }
 
