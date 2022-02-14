@@ -26,7 +26,7 @@ typedef struct node
 
 
 // Defalt Binarye Tree operatios
-node *insertNode(node *root, player player); // insert ordering nodes
+node insertNode(node **root, player player); // insert ordering nodes
 node deleteNode(player player, node *root);
 node searchNode(player player, node *root);
 
@@ -41,21 +41,23 @@ node calcPositions(node root);
 
 //Implementatios
 
-node *insertNode(node *root,player player){
-    node *current   = (node *)malloc(sizeof(struct node));
-    current->left = NULL;
-    current->right = NULL;
-    current->player = player;
-
-    if(root == NULL){
-        current ->position = 1;
-        return current;
-    }else  if(root->position > current->position){
-        root->left = insertNode(root->left,current->player);
-    }else{
-        root->right = insertNode(root->right,current->player);
+node insertNode(node **root,player player){
+    
+    node *temp = NULL;
+    if(*root == NULL){        
+        temp  = (node *)malloc(sizeof(struct node));
+        temp->left = temp->right = NULL;
+        temp->position = 1;
+        temp->player = player;
+        *root =  temp;
+    }else  if((*root)->player.coin < player.coin){
+        insertNode(&(*root)->left, player);
+    }else  if((*root)->player.coin > player.coin){
+        insertNode(&(*root)->right,player);
     }
-    return root;
+    //if(player.coin == 100) { (*root)->position = 1;};
+    //if(player.coin == 101) { (*root)->position = 2;};
+    //if(player.coin == 99) { (*root)->position = 3;};
 }
 
 node deleteNode(player player, node *root){
