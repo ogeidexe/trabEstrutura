@@ -26,9 +26,9 @@ typedef struct node
 
 
 // Defalt Binarye Tree operatios
-node insertNode(node **root, player player); // insert ordering nodes
-node deleteNode(player player, node *root);
-node searchNode(player player, node *root);
+node insertNode(node **root, player player); // insert ordering nodes OK
+node deleteNode(player player, node *root); // Delete nodes on tree diferent cases 
+node *searchNode(int moedas, node *root); // izi dude OK
 
 int swapNodes(node whereNode, node fromNode); /// BOSS****
 
@@ -64,8 +64,18 @@ node deleteNode(player player, node *root){
 
 }
 
-node serachNode(player player, node root){
-
+node *searchNode(int moedas , node *root){
+    if(root != NULL) {
+        if(root->player.coin ==  moedas){
+            return root;
+        }else if(root->player.coin <  moedas){
+           return searchNode(moedas, root->left);
+        }else if(root->player.coin >  moedas){
+            return searchNode(moedas,root->right);
+        }
+    }else {
+        return 0;
+    }
 }
 
 
