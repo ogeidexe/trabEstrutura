@@ -11,20 +11,11 @@ typedef struct Player
 {
     char *name;
     int coin;
-<<<<<<< HEAD
-}Player;
-
-
-typedef struct node
-{   
-    struct Player player;
-=======
 } player;
 
 typedef struct node
 {
     struct player player;
->>>>>>> d8c8a6f67f1fcd80c0c96974afc0a43741b4cf06
     int position;
     struct node *left;
     struct node *right;
@@ -33,15 +24,9 @@ typedef struct node
 //---------------------------- Functions ----------------------//
 
 // Defalt Binarye Tree operatios
-<<<<<<< HEAD
-node insertNode(node **root, Player player); // insert ordering nodes OK
-node deleteNode(Player player, node **root); // Delete nodes on tree diferent cases 
-node *searchNode(int moedas, node *root); // izi dude OK
-=======
 node insertNode(node **root, player player); // insert ordering nodes OK
 void deleteNode(node **root, player player); // Delete nodes on tree diferent cases
 node *searchNode(int moedas, node *root);    // izi dude OK
->>>>>>> d8c8a6f67f1fcd80c0c96974afc0a43741b4cf06
 
 int swapNodes(node whereNode, node fromNode); /// BOSS****
 
@@ -57,20 +42,11 @@ node *obteMenorNo(node *no);
 node insertNode(node **root, player player)
 {
 
-<<<<<<< HEAD
-node insertNode(node **root,Player player){
-    if(*root == NULL){        
-        node *temp = NULL;
-        temp  = (node *)malloc(sizeof(struct node));
-        temp->left = NULL; 
-        temp->right = NULL;
-=======
     node *temp = NULL;
     if (*root == NULL)
     {
         temp = (node *)malloc(sizeof(struct node));
         temp->left = temp->right = NULL;
->>>>>>> d8c8a6f67f1fcd80c0c96974afc0a43741b4cf06
         temp->position = 1;
         temp->player = player;
         *root = temp;
@@ -85,69 +61,12 @@ node insertNode(node **root,Player player){
     }
 }
 
-<<<<<<< HEAD
-node deleteNode(Player player, node **root){
-    node *parent = NULL;
-    node *current = *root;
-    //numero de moedas
-    parent  = searchNode(player.coin,*root);
-    //Caso  1 onde o no não tem filhos
-    //teste da arvore
-    if (current == NULL) {
-        return;
-    }  
-
-    if(current->left  ==  NULL && current->right ==  NULL){
-        printf(">%s:%s<",parent->player.name,(*root)->player.name);
-        if(current != *root){
-            if(parent->left == current)
-                parent->left =  NULL;
-            else
-                parent->right = NULL;
-        }else{
-            root = NULL;
-        }
-        free(current);  
-    //Caso  2 onde o no tem dois filhos
-    }else if(current->left && current->right){
-        // encontrar o sucessor na ordem -
-        node *sucessor =  obteMenorNo(current->right);
-        // guardar o valor do sucessor
-        Player playerTmp = sucessor->player;
-        //remove sucessor da arvore   
-        deleteNode(sucessor->player, root);
-        
-        current->player =  playerTmp;
-    //Caso 3 o no tem apenas um filho
-    }else{
-        node*  chlid =  (current->left) ? current->left : current->right;
-        //Se o no não for o no root defina o como um de seus filhos
-        if(current != *root){
-            if (current == parent->left){
-                parent->left =  chlid;
-            }else{
-                parent->right=  chlid;
-            }
-
-        }else{
-            *root =  chlid;
-        }
-        free(current);
-    }
-
-}
-
-node *searchNode(int moedas , node *root){
-    if(root != NULL) {
-        if(root->player.coin ==  moedas){
-=======
 node *searchNode(int moedas, node *root)
 {
     if (root != NULL)
     {
         if (root->player.coin == moedas)
         {
->>>>>>> d8c8a6f67f1fcd80c0c96974afc0a43741b4cf06
             return root;
         }
         else if (root->player.coin < moedas)
@@ -161,19 +80,6 @@ node *searchNode(int moedas, node *root)
     }
 }
 
-<<<<<<< HEAD
-void printTree (node *root) {
-   if (root != NULL) {
-		printTree (root->left);  
-		printf("**********    Player   *******\n");
-		printf ("Posicao: %d\n", root->position);
-		printf ("Nome: %s\n", root->player.name); 
-		printf ("Pontos: %d\n", root->player.coin);
-		printf("\n****************************\n");  
-        
-		printTree (root->right);     
-   }
-=======
 void printTree(node *root)
 {
     if (root != NULL)
@@ -186,7 +92,6 @@ void printTree(node *root)
         printf("\n****************************\n");
         printTree(root->right);
     }
->>>>>>> d8c8a6f67f1fcd80c0c96974afc0a43741b4cf06
 }
 
 node *calcPositions(node *root)
@@ -222,15 +127,6 @@ node *MaiorDireita(node **root)
     }
 }
 
-<<<<<<< HEAD
-node *obteMenorNo(node * no){
-    while (no->left != NULL)
-    {
-        no = no->left;
-    }
-    return no;
-} 
-=======
 void deleteNode(node **root, player player)
 {
 
@@ -283,4 +179,3 @@ void deleteNode(node **root, player player)
         }
     }
 }
->>>>>>> d8c8a6f67f1fcd80c0c96974afc0a43741b4cf06
