@@ -25,12 +25,12 @@ int main(int argc, char const *argv[])
     player3.coin = 99;
     insertNode(&root, player3);
 
-    player player4;
+    Player player4;
     player4.name = "Jefim";
     player4.coin = 200;
     insertNode(&root, player4);
 
-    player player5;
+    Player player5;
     player5.name = "Diego";
     player5.coin = 20;
     insertNode(&root, player5);

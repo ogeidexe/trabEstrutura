@@ -11,11 +11,11 @@ typedef struct Player
 {
     char *name;
     int coin;
-} player;
+} Player;
 
 typedef struct node
 {
-    struct player player;
+    struct Player player;
     int position;
     struct node *left;
     struct node *right;
@@ -24,8 +24,7 @@ typedef struct node
 //---------------------------- Functions ----------------------//
 
 // Defalt Binarye Tree operatios
-node insertNode(node **root, player player); // insert ordering nodes OK
-void deleteNode(node **root, player player); // Delete nodes on tree diferent cases
+void deleteNode(node **root, Player player); // Delete nodes on tree diferent cases
 node *searchNode(int moedas, node *root);    // izi dude OK
 
 int swapNodes(node whereNode, node fromNode); /// BOSS****
@@ -39,7 +38,7 @@ node *obteMenorNo(node *no);
 
 // Implementatios
 
-node insertNode(node **root, player player)
+node insertNode(node **root, Player player)
 {
 
     node *temp = NULL;
@@ -127,7 +126,7 @@ node *MaiorDireita(node **root)
     }
 }
 
-void deleteNode(node **root, player player)
+void deleteNode(node **root, Player player)
 {
 
     if (*root == NULL)
