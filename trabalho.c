@@ -25,11 +25,12 @@ int main(int argc, char const *argv[])
     player3.coin = 99;
     insertNode(&root,player3);
 
-    printf("%s\n",root->player.name);
-    printf("%s\n",root->left->player.name);
-    printf("%s\n",root->right->player.name);
+    //printf("%s\n",root->player.name);
+    //printf("%s\n",root->left->player.name);
+    //printf("%s\n",root->right->player.name);
+    printTree(root);
     node *temp=(node *) malloc (sizeof(struct node));
     temp = searchNode(99,root);
-    printf("Fulano encontrado: %s\n", temp->player.name);
+    //printf("Fulano encontrado: %s\n", temp->player.name);
     return 0;
 }
