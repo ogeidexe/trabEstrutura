@@ -28,6 +28,8 @@ int main(int argc, char const *argv[])
     // printf("%s\n",root->player.name);
     // printf("%s\n",root->left->player.name);
     // printf("%s\n",root->right->player.name);
+
+    calcPositions(root);
     printTree(root);
     node *temp=(node *) malloc (sizeof(struct node));
     temp = searchNode(99,root);

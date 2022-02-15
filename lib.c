@@ -32,8 +32,6 @@ node *searchNode(int moedas, node *root); // izi dude OK
 
 int swapNodes(node whereNode, node fromNode); /// BOSS****
 
-int position = 0;
-
 // Custom Operatios
 int sumCoins(char* playerName,int coinsToSum);
 int rmCoins(char* playerName, int coinsToRemove);
@@ -57,9 +55,6 @@ node insertNode(node **root,player player){
     }else  if((*root)->player.coin > player.coin){
         insertNode(&(*root)->right,player);
     }
-    //if(player.coin == 100) { (*root)->position = 1;};
-    //if(player.coin == 101) { (*root)->position = 2;};
-    //if(player.coin == 99) { (*root)->position = 3;};
 }
 
 node deleteNode(player player, node *root){
@@ -75,8 +70,6 @@ node *searchNode(int moedas , node *root){
         }else if(root->player.coin >  moedas){
             return searchNode(moedas,root->right);
         }
-    }else {
-        return 0;
     }
 }
 
@@ -92,13 +85,16 @@ void printTree (node *root) {
    }
 }
 
-node *calcPositions(node *root){
-	if (root != NULL) {
-		calcPositions(root->left); 
-		root->position = position;  
-		position++;
-		calcPositions(root->right);     
+node *calcPositions(node *root ){
+    if(root == NULL) {
+        root->position++;
+    }
+	else if (root->left != NULL) {
+	   calcPositions(root->left);
+   }else if(root->right != NULL){
+       calcPositions(root->right);
    }
+   
    return root; 	
 }
 
