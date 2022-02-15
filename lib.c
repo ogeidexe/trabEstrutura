@@ -32,11 +32,13 @@ node *searchNode(int moedas, node *root); // izi dude OK
 
 int swapNodes(node whereNode, node fromNode); /// BOSS****
 
+int position = 0;
+
 // Custom Operatios
 int sumCoins(char* playerName,int coinsToSum);
 int rmCoins(char* playerName, int coinsToRemove);
-void printTree(node root);//  mostrar arvore em ERD 
-node calcPositions(node root);
+void printTree(node *root);//  mostrar arvore em ERD 
+node *calcPositions(node *root);
 
 
 //Implementatios
@@ -78,5 +80,25 @@ node *searchNode(int moedas , node *root){
     }
 }
 
+void printTree (node *root) {
+   if (root != NULL) {
+		printTree (root->left);  
+		printf("**********    Player   *******\n");
+		printf ("Posicao: %d\n", root->position);
+		printf ("Nome: %s\n", root->player.name); 
+		printf ("Pontos: %d\n", root->player.coin);
+		printf("\n****************************\n");  
+		printTree (root->right);     
+   }
+}
 
+node *calcPositions(node *root){
+	if (root != NULL) {
+		calcPositions(root->left); 
+		root->position = position;  
+		position++;
+		calcPositions(root->right);     
+   }
+   return root; 	
+}
 
