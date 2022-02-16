@@ -9,9 +9,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "/home/ogeidexe/Estrutura de dados",
+      "cwd": "/home/ogeidexe/EstDados/trabEstrutura",
       "environment": [],
-      "program": "/home/ogeidexe/Estrutura de dados/build/Debug/outDebug",
+      "program": "/home/ogeidexe/EstDados/trabEstrutura/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",

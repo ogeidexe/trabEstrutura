@@ -21,6 +21,8 @@ typedef struct node
     struct node *right;
 } node;
 
+int position = 0;
+
 //---------------------------- Functions ----------------------//
 
 // Defalt Binarye Tree operatios
@@ -33,7 +35,7 @@ int swapNodes(node whereNode, node fromNode); /// BOSS****
 int sumCoins(char *playerName, int coinsToSum);
 int rmCoins(char *playerName, int coinsToRemove);
 void printTree(node *root); //  mostrar arvore em ERD
-node *calcPositions(node *root);
+void calcPositions(node **root);
 node *obteMenorNo(node *no);
 
 // Implementatios
@@ -58,6 +60,8 @@ node insertNode(node **root, Player player)
     {
         insertNode(&(*root)->right, player);
     }
+    position = 0;
+    calcPositions(root);
 }
 
 node *searchNode(int moedas, node *root)
@@ -93,22 +97,14 @@ void printTree(node *root)
     }
 }
 
-node *calcPositions(node *root)
+void calcPositions(node **root)
 {
     if (root == NULL)
     {
-        root->position++;
+        calcPositions(&(*root)->left);
+        (*root)->position = position++;
+        calcPositions(&(*root)->right);
     }
-    else if (root->left != NULL)
-    {
-        calcPositions(root->left);
-    }
-    else if (root->right != NULL)
-    {
-        calcPositions(root->right);
-    }
-
-    return root;
 }
 
 node *MaiorDireita(node **root)
@@ -177,4 +173,17 @@ void deleteNode(node **root, Player player)
             }
         }
     }
+    position = 0;
+    calcPositions(root);
+}
+
+void fight(node **root,Player winner, Player loser){
+    deleteNode(root,loser);
+    deleteNode(root,winner);
+    winner.coin+=3;
+    loser.coin-=3;
+    insertNode(root,winner);
+    if(loser.coin >= 0){
+        insertNode(root,loser);
+    }  
 }

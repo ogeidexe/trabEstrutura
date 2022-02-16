@@ -39,11 +39,14 @@ int main(int argc, char const *argv[])
     // printf("%s\n",root->left->player.name);
     // printf("%s\n",root->right->player.name);
 
-    root = calcPositions(root);
-    deleteNode(&root, player4);
+    //deleteNode(&root, player4);
+    
+    fight(&root,player2,player3);
+    calcPositions(&root);
     printTree(root);
     node *temp = (node *)malloc(sizeof(struct node));
     temp = searchNode(99, root);
+
     // printf("Fulano encontrado: %s\n", temp->player.name);
     return 0;
 }
