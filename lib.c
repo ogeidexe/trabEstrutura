@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /******************
  *Jeferson Silva
  *Diego teixeira
- *
  *******************/
 //---------------------------Data structure--------------------//
 
 typedef struct Player
 {
-    char name[100];
+    char *name;
     int coin;
 } Player;
 

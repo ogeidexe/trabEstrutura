@@ -5,6 +5,23 @@
  *Diego Teixeira
  *
  *******************/
+Player getPlayer(){
+    puts("Digite os dados do player");
+    Player playerTmp25;
+    int coin;
+    char plnm[1000];
+    printf("Digite o nome player:");
+    fflush(stdin);
+    setbuf(stdin, NULL);
+    scanf("%s",plnm);
+    printf("Digite as moedas do player:");
+    scanf("%d",&coin);
+    playerTmp25.name = plnm;
+    playerTmp25.coin = coin;
+    return playerTmp25;
+}
+
+
 int menu(){
     int op = 1;
     puts("-------------------");
@@ -12,6 +29,7 @@ int menu(){
     puts("2 - INSERIR PLAYER ");
     puts("3 - REMOVER PLAYER ");
     puts("4 - LUTAR          ");
+    puts("0 - SAIR           ");
     puts("-------------------");
     scanf("%d",&op);
     return op;
@@ -46,61 +64,29 @@ int main(int argc, char const *argv[])
     player5.name = "Diego";
     player5.coin = 20;
     insertNode(&root, player5);
-
-    // printf("%s\n",root->player.name);
-    // printf("%s\n",root->left->player.name);
-    // printf("%s\n",root->right->player.name);
-    int op =  menu();
-    switch (op)
-    {
-
-    case 1:
-        printTree(root);
-        break;
-    case 2:
-        puts("Digite os dados do player");
-        Player playerTmp25;
-        printf("Digite o nome player");
-        scanf("%s",playerTmp25.name);
-        printf("Digite as moedas do player");
-        scanf("%d",&playerTmp25.coin);
-        insertNode(&root,playerTmp25);
-        break;
-    case 3:
-        puts("Digite os dados do player");
-        Player playerTmp;
-        puts("Digite o nome player");
-        scanf("%[^\n]",&playerTmp.name);
-        puts("Digite as moedas do player");
-        scanf("%d",&playerTmp.coin);
-        deleteNode(&root,playerTmp);
-        break;
-    case 4:
-        puts("Digite os dados do players");
-        Player playerTmp1;
-        puts("Digite o nome player vencedor");
-        scanf("%[^\n]",&playerTmp1.name);
-        puts("Digite as moedas do player");
-        scanf("%d",&playerTmp1.coin);
-        
-        Player playerTmp2;
-        puts("Digite o nome player perdedor");
-        scanf("%[^\n]",&playerTmp2.name);
-        puts("Digite as moedas do player");
-        scanf("%d",&playerTmp2.coin);
-        fight(&root,playerTmp1,playerTmp2);
-        break;
-    }
-
-    deleteNode(&root, player4);
-    
-    fight(&root,player2,player3);
-
-    
-    printTree(root);
-    node *temp = (node *)malloc(sizeof(struct node));
-    temp = searchNode(99, root);
-
-    // printf("Fulano encontrado: %s\n", temp->player.name);
+    int op = 1;
+    while (op != 0){
+        op =  menu();
+        switch (op)
+        {
+        case 1:
+            printTree(root);
+            break;
+        case 2:
+            insertNode(&root,getPlayer());
+            break;
+        case 3:
+            deleteNode(&root,getPlayer());
+            break;
+        case 4:
+            puts("Digite os dados do players");
+            puts("Digite o nome player vencedor");
+            Player playerTmp1 = getPlayer();
+            puts("Digite o nome player perdedor");
+            Player playerTmp2 = getPlayer();
+            fight(&root,playerTmp1,playerTmp2);
+            break;
+        }
+    };
     return 0;
 }
