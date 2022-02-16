@@ -21,7 +21,7 @@ typedef struct node
     struct node *right;
 } node;
 
-int position = 0;
+int position = 1;
 
 //---------------------------- Functions ----------------------//
 
@@ -60,7 +60,7 @@ node insertNode(node **root, Player player)
     {
         insertNode(&(*root)->right, player);
     }
-    position = 0;
+    position = 1;
     calcPositions(root);
 }
 
@@ -99,7 +99,7 @@ void printTree(node *root)
 
 void calcPositions(node **root)
 {
-    if (root == NULL)
+    if (*root != NULL)
     {
         calcPositions(&(*root)->left);
         (*root)->position = position++;
@@ -173,7 +173,7 @@ void deleteNode(node **root, Player player)
             }
         }
     }
-    position = 0;
+    position = 1;
     calcPositions(root);
 }
 

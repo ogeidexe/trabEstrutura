@@ -11,7 +11,7 @@
       "stopAtEntry": false,
       "cwd": "/home/ogeidexe/EstDados/trabEstrutura",
       "environment": [],
-      "program": "/home/ogeidexe/EstDados/trabEstrutura/build/Debug/outDebug",
+      "program": "/home/ogeidexe/EstDados/trabEstrutura",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
