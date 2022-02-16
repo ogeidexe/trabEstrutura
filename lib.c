@@ -9,7 +9,7 @@
 
 typedef struct Player
 {
-    char *name;
+    char name[100];
     int coin;
 } Player;
 

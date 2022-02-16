@@ -5,6 +5,18 @@
  *Diego Teixeira
  *
  *******************/
+int menu(){
+    int op = 1;
+    puts("-------------------");
+    puts("1 - LISTAR PLAYERS ");
+    puts("2 - INSERIR PLAYER ");
+    puts("3 - REMOVER PLAYER ");
+    puts("4 - LUTAR          ");
+    puts("-------------------");
+    scanf("%d",&op);
+    return op;
+}
+
 
 int main(int argc, char const *argv[])
 {
@@ -38,6 +50,47 @@ int main(int argc, char const *argv[])
     // printf("%s\n",root->player.name);
     // printf("%s\n",root->left->player.name);
     // printf("%s\n",root->right->player.name);
+    int op =  menu();
+    switch (op)
+    {
+
+    case 1:
+        printTree(root);
+        break;
+    case 2:
+        puts("Digite os dados do player");
+        Player playerTmp25;
+        printf("Digite o nome player");
+        scanf("%s",playerTmp25.name);
+        printf("Digite as moedas do player");
+        scanf("%d",&playerTmp25.coin);
+        insertNode(&root,playerTmp25);
+        break;
+    case 3:
+        puts("Digite os dados do player");
+        Player playerTmp;
+        puts("Digite o nome player");
+        scanf("%[^\n]",&playerTmp.name);
+        puts("Digite as moedas do player");
+        scanf("%d",&playerTmp.coin);
+        deleteNode(&root,playerTmp);
+        break;
+    case 4:
+        puts("Digite os dados do players");
+        Player playerTmp1;
+        puts("Digite o nome player vencedor");
+        scanf("%[^\n]",&playerTmp1.name);
+        puts("Digite as moedas do player");
+        scanf("%d",&playerTmp1.coin);
+        
+        Player playerTmp2;
+        puts("Digite o nome player perdedor");
+        scanf("%[^\n]",&playerTmp2.name);
+        puts("Digite as moedas do player");
+        scanf("%d",&playerTmp2.coin);
+        fight(&root,playerTmp1,playerTmp2);
+        break;
+    }
 
     deleteNode(&root, player4);
     
